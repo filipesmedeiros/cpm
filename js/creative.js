@@ -74,7 +74,7 @@ const aftersrc = " class='img-responsive' alt=''></a></div></div>";
 
 function makeString() {
     if(page == "albumLondon.html") {
-        finalImg = 144;
+        finalImg = 139;
         hrefsrc = "'../img/london/london (" + counter + ").JPG'><img src='../img/london/london (" + counter + ").JPG'";
     }
     else if(page == "albumDublin.html") {
