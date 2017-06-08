@@ -78,7 +78,7 @@ function makeString() {
         hrefsrc = "'../img/london/london (" + counter + ").JPG'><img src='../img/london/london (" + counter + ").JPG'";
     }
     else if(page == "albumDublin.html") {
-        finalImg = 93;
+        finalImg = 88;
         hrefsrc = "'../img/dublin/dublin (" + counter + ").JPG'><img src='../img/dublin/dublin (" + counter + ").JPG'";
     }
     var str = beforehref + hrefsrc + aftersrc;
