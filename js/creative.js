@@ -62,3 +62,35 @@
     });
 
 })(jQuery); // End of use strict
+
+var counter = 6;
+
+const before1stnumber = "<div class='row no-gutter margin-bott-more'><div class='col-lg-7 col-sm-8 col-centered'><a href='../img/london/london (";
+const before2ndnumber = ").JPG'><img src='../img/london/london (";
+const afterNumber = ").JPG' class='img-responsive' alt=''></a></div></div>";
+
+function makeString() {
+    var str =  before1stnumber + counter + before2ndnumber + counter + afterNumber;
+    counter++;
+    return str;
+}
+
+function getDocumentHeight() {
+    const body = document.body;
+    const html = document.documentElement;
+    
+    return Math.max(
+        body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight
+    );
+};
+
+function getScrollTop() {
+    return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+}
+
+window.onscroll = function() {
+    if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
+    console.log("kek");
+    document.getElementById("gallery").insertAdjacentHTML('beforeend', makeString());
+};
