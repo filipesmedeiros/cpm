@@ -64,33 +64,39 @@
 })(jQuery); // End of use strict
 
 var counter = 6;
+var hrefsrc = "";
+var finalImg = 0;
 
-const before1stnumber = "<div class='row no-gutter margin-bott-more'><div class='col-lg-7 col-sm-8 col-centered'><a href='../img/london/london (";
-const before2ndnumber = ").JPG'><img src='../img/london/london (";
-const afterNumber = ").JPG' class='img-responsive' alt=''></a></div></div>";
+const gallery = document.getElementById("gallery");
+const page = window.location.pathname.split("/").pop();
+const beforehref = "<div class='row no-gutter margin-bott-more'><div class='col-lg-7 col-sm-8 col-centered'><a href=";
+const aftersrc = " class='img-responsive' alt=''></a></div></div>";
 
 function makeString() {
-    var str =  before1stnumber + counter + before2ndnumber + counter + afterNumber;
+    if(page == "albumLondon.html") {
+        finalImg = 144;
+        hrefsrc = "'../img/london/london (" + counter + ").JPG'><img src='../img/london/london (" + counter + ").JPG'";
+    }
+    else if(page == "albumDublin.html") {
+        finalImg = 93;
+        hrefsrc = "'../img/dublin/dublin (" + counter + ").JPG'><img src='../img/dublin/dublin (" + counter + ").JPG'";
+    }
+    var str = beforehref + hrefsrc + aftersrc;
     counter++;
     return str;
 }
 
-function getDocumentHeight() {
-    const body = document.body;
-    const html = document.documentElement;
-    
-    return Math.max(
-        body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight
-    );
-};
+function addHTML() {
+    var totalString = "";
+    for(var i = 0; i < 10; i++) {
+        if(counter == finalImg + 1) break;
+        totalString += makeString();
+    }
 
-function getScrollTop() {
-    return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    gallery.insertAdjacentHTML('beforeend', totalString);
+
+    if(counter == finalImg + 1) {
+        var elem = document.getElementById("moreButton");
+        elem.parentNode.removeChild(elem);
+    }
 }
-
-window.onscroll = function() {
-    if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
-    console.log("kek");
-    document.getElementById("gallery").insertAdjacentHTML('beforeend', makeString());
-};
