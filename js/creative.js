@@ -67,10 +67,10 @@ var counter = 6;
 var hrefsrc = "";
 var finalImg = 0;
 
-const gallery = document.getElementById("gallery");
+const button = document.getElementById("moreButton");
 const page = window.location.pathname.split("/").pop();
 const beforehref = "<div class='row no-gutter margin-bott-more'><div class='col-lg-7 col-sm-8 col-centered'><a href=";
-const aftersrc = " class='img-responsive' alt=''></a></div></div>";
+const aftersrc = " class='img-responsive img-new' alt=''></a></div></div>";
 
 function makeString() {
     if(page == "albumLondon.html") {
@@ -93,7 +93,7 @@ function addHTML() {
         totalString += makeString();
     }
 
-    gallery.insertAdjacentHTML('beforeend', totalString);
+    button.insertAdjacentHTML('beforebegin', totalString);
 
     if(counter == finalImg + 1) {
         var elem = document.getElementById("moreButton");

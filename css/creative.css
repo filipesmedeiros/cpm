@@ -481,3 +481,9 @@ body {
     padding-top: 40px;
   }
 }
+@media (max-width: 767px) {
+   .img-new {
+    max-width: 90%;
+    margin: -5px auto;
+  }
+}
