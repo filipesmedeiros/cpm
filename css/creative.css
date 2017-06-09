@@ -473,7 +473,7 @@ body {
     position: static;
   }
 }
-@media (min-width: 767px) {
+@media (max-width: 767px) {
   .hide-mobile {
     display: block !important;
   }
