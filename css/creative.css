@@ -473,3 +473,11 @@ body {
     position: static;
   }
 }
+@media (min-width: 767px) {
+  .hide-mobile {
+    display: block !important;
+  }
+  #albums {
+    padding-top: 40px;
+  }
+}
